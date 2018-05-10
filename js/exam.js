@@ -1,7 +1,7 @@
 function handleClick(data) {
 	document.getElementById('input-service').value = data.name;
 	// save keyword to local storage
-	localStorage.setItem('keywordFilter', data.name);
+	localStorage.setItem(data.name, data.name);
 	var ele = document.getElementById('list-services');
 	while(ele.firstChild) {
 	  	ele.removeChild(ele.firstChild);
@@ -10,7 +10,7 @@ function handleClick(data) {
 
 /**
  * [renderServices : render list service]
- * @param  {[type]} data [object]
+ * @param  {[type]} data [object {id, thumbnailUrl, name}]
  */
 function renderServices(data) {
 
@@ -42,29 +42,35 @@ function emptyElement(ele){
 
 function renderSugguestList(allData) {
 	var ele = document.getElementById('list-services');
-	emptyElement(ele);
+	// emptyElement(ele);
 	allData.map(function(data) {
 		renderServices(data);
 	});
 }
 
-var currentFocus = 1;
-function handleKeyDown() {
-	document.getElementById('input-service').addEventListener("keydown", function(e) {
-		console.log(currentFocus)
-		var ele = document.getElementById("list-services");
-		if (ele){
-			ele = ele.getElementsByTagName("div");
-		}
-		if (e.keyCode == 40) {
-		    currentFocus++;
-		    addActive(ele);
-		} else if (ele.keyCode == 38) {
-		    currentFocus--;
-		    addActive(ele);
-		}
-	});
-}
+var currentFocus = -1;
+document.getElementById('input-service').addEventListener("keydown", function(e) {
+	var ele = document.getElementById("list-services");
+	if (ele){
+		ele = ele.getElementsByTagName("div");
+	}
+	if (e.keyCode == 40) {
+	    currentFocus++;
+	    addActive(ele);
+	} 
+	if (e.keyCode == 38) {
+        currentFocus--;
+        addActive(ele);
+    } 
+    if (e.keyCode == 13) {
+        e.preventDefault();
+        if (currentFocus > -1) {
+        	if (ele) {
+        		ele[currentFocus].click();
+        	}
+        }
+    }
+});
 
 function addActive(x) {
    	if (!x) {
@@ -84,9 +90,7 @@ function removeActive(x) {
    	for (var i = 0; i < x.length; i++) {
      	x[i].classList.remove("autocomplete-active");
    	}
- }
-
-
+}
 
 /**
  * [handleFilter : filter service is name]
