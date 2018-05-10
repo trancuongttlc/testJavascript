@@ -1,0 +1,29 @@
+<!doctype>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+		<title>javascript coding exam</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="dist/main.css">
+	</head>
+	<body>
+		<div class="container">
+		  	<p class="text-service">UIT Team JavaScript Testing</p>
+			<form autocomplete="off" onsubmit="event.preventDefault();" role="form">
+			    <div class="form-group">
+			    	<p class="label-servicename">Service Name</p>
+			        <input onfocus="handleFilter()" onkeydown="handleKeyDown()" onkeyup="handleFilter()" type="text" id="input-service" name="apps" value="" />
+					<div class="contents" id="list-services"></div>
+			    </div>
+			</form>
+		</div>
+		<script src="json/data.js"></script>
+		<script src="js/exam.js"></script>
+		<!-- <script src="dist/bundle.js"></script> -->
+	</body>
+</html>
+<!-- <div class="app-items">
+	<img src="./image/chrome.png" height="30px;" width="30px;">
+	<strong class="service-name">Chrome</strong>
+</div> -->
