@@ -16,8 +16,6 @@
     -webkit-box-orient: vertical
     display: -webkit-box
 
-
-
 .contents 
 	width: 50%
 	height: auto
@@ -31,8 +29,9 @@
 	border-bottom: 1px solid #cccccc
 	border-top: 1px solid #d5d5d5
 	height: 30px
-	width: 100%
-
+	white-space: nowrap
+	text-overflow: ellipsis
+	overflow: hidden
 
 .app-items:first-child 
 	border-top: none
@@ -51,7 +50,7 @@
 .app-items:hover 
 	background: #a2a2a2
 	cursor: pointer
-
+	
 
 #input-service 
 	height: 25px
