@@ -23,6 +23,7 @@
 		var items = document.createElement("div");  
 		items.classList.add("app-items");
 		items.onclick = handleClick.bind(this, data);
+
 		// render image service
 		var img = document.createElement("img");
 		img.src = data.thumbnailUrl;
